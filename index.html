@@ -1,30 +1,706 @@
-<!DOCTYPE html><html lang="en" style="background-color: rgb(237, 39, 36);"><head><meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="robots" content="noindex, nofollow"> <meta name="author" content="EnBizCard - An Open-Source Digital Business Card Generator"> <meta name="url" content="https://enbizcard.vishnuraghav.com/"> <meta name="designer" content="Vishnu Raghav"> <meta property="og:title" content="Krittin Poonsawat's Digital Business Card"> <meta property="twitter:title" content="Krittin Poonsawat's Digital Business Card"> <script>
-          "http"==window.location.href.substr(0,4)&&"/"!=window.location.href.slice(-1)&&window.location.replace(window.location.href+"/");
-        </script> <!----> <title>Krittin Poonsawat's Digital Business Card</title> <style>
-          #body{ font-family: sans-serif; } input[type='range']::-moz-range-track { background: none; } input[type='range']::-moz-range-thumb { -moz-appearance: none; width: 1.5rem; height: 1.5rem; border-radius: 0.25rem; border: none; background: #ED2724; z-index: 3; cursor: pointer; } input[type='range']::-webkit-slider-thumb { -webkit-appearance: none; width: 1.5rem; height: 1.5rem; border-radius: 0.25rem; border: none; background: #ED2724; z-index: 3; cursor: pointer; } .closeColor{  } .topAction { } .iconColor{ color:#eee;  } .cardColor{ color:#222 !important } .textColor{ color:#eee !important } .seekbarColor{  background:#ED272480 !important }
-        </style> <style>
-          #info{ border-left: 0.25rem dashed #ED2724 } .section{border-left: 0.25rem solid #ED2724}
-        </style> <!----><link rel="stylesheet" href="./style.min.css"></head> <body id="body"><div id="modal" style="background-color: rgb(0, 32, 66); visibility: hidden; top: 2rem; opacity: 0;"><a id="close" class="closeColor"><div class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2"><path style="fill:none" d="M0 0h24v24H0z"></path><path d="M18 6 6 18M6 6l12 12" style="fill:none;fill-rule:nonzero;stroke:#fff;stroke-width:2px"></path></svg></div></a> <div id="keyView"><p class="textColor">
-              Use my public key to send me encrypted messages
-            </p> <a download="" target="_blank" id="dlKey" rel="noreferrer" tabindex="-1" style="background-color: rgb(237, 39, 36);" href="./Krittin Poonsawat's public key.asc"><div class="icon iconColor"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2"><path style="fill:none" d="M0 0h24v24H0z"></path><path d="M21 15v4c0 1.097-.903 2-2 2H5c-1.097 0-2-.903-2-2v-4m4-5 5 5 5-5m-5 5V3" style="fill:none;fill-rule:nonzero;stroke:#fff;stroke-width:2px"></path></svg></div> <span class="iconColor">Download Key</span></a></div> <div id="copyView"><p class="textColor">
-              Copy and send the URL to share my Business Card
-            </p> <button id="copyURL" style="background-color: rgb(237, 39, 36);"><div class="icon iconColor"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2"><path style="fill:none" d="M0 0h24v24H0z"></path><path d="M22 11a2 2 0 0 0-2-2h-9a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-9Z" style="fill:none;stroke:#fff;stroke-width:2px"></path><path d="M5 15H4c-1.097 0-2-.903-2-2V4c0-1.097.903-2 2-2h9c1.097 0 2 .903 2 2v1" style="fill:none;fill-rule:nonzero;stroke:#fff;stroke-width:2px"></path></svg></div> <span class="iconColor">Copy URL</span></button></div> <div id="qrView" class="textColor"><div id="qr"></div> <h3>Scan the QR Code</h3> <p>to view my Business Card on another device</p></div></div> <header><div id="topActions" style="display: none;"><div><a id="share"><div class="icon topAction"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:2"><g><path style="fill:none" d="M0 0h24v24H0z"></path><clipPath id="a"><path d="M0 0h24v24H0z"></path></clipPath><g clip-path="url(#a)"><circle cx="17" cy="5" r="3" style="fill:none;stroke:#fff;stroke-width:2px"></circle><circle cx="5" cy="12" r="3" style="fill:none;stroke:#fff;stroke-width:2px"></circle><circle cx="17" cy="19" r="3" style="fill:none;stroke:#fff;stroke-width:2px"></circle><path d="m7.59 13.51 6.83 3.98m-.01-10.98-6.82 3.98" style="fill:none;stroke:#fff;stroke-width:2px"></path></g></g></svg></div></a> <a id="showQR"><div class="icon topAction"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2"><path style="fill:none" d="M0 0h24v24H0z"></path><path d="M4 4h4v4H4V4Zm0 12h4v4H4v-4ZM16 4h4v4h-4V4Z" style="fill:none;stroke:#fff;stroke-width:2px"></path><path d="M12 4v14c0 1.097.903 2 2 2h4c1.097 0 2-.903 2-2v-4c0-1.097-.903-2-2-2H4" style="fill:none;stroke:#fff;stroke-width:2px;stroke-linejoin:miter"></path><path style="fill:#fff" d="M15 15h2v2h-2z"></path></svg></div></a></div> <!----></div> <div class="headerImgC"><img id="cover" src="./cover.jpeg" alt="Background Pattern"> <img id="logo" src="./logo.jpeg" alt="Logo" style="margin: 3rem 0px 6rem;"></div></header> <main style="background-color: rgb(0, 32, 66); margin-top: 0px;"><img id="profilePhoto" src="./photo.jpeg" alt="Photo"> <div id="info" class="textColor"><p class="name">
-              Krittin Poonsawat
-            </p> <!----> <p class="jobtitle">
-              Data Analyst Consultant, Investigation Unit
-            </p> <p class="bizname">
-              Tilleke &amp; Gibbins International Ltd.
-            </p> <p class="bizaddr">
-              Supalai Grand Tower, 26th Floor
-1011 Rama 3 Road, Chongnonsi, Yannawa, Bangkok 10120, Thailand
-            </p></div> <!----> <a id="cta" rel="noreferrer" download="" target="_blank" aria-label="Save Contact" style="background-color: rgb(237, 39, 36);" href="krittinpoonsawat.vcf"><div class="icon iconColor"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2"><path style="fill:none" d="M0 0h24v24H0z"></path><circle cx="8.5" cy="7" r="4" style="fill:none;stroke:#fff;stroke-width:2.29px" transform="matrix(.875 0 0 .875 4.563 -.625)"></circle><path d="M86 181c0-3.863 3.137-7 7-7s7 3.137 7 7" style="fill:none;stroke:#fff;stroke-width:2px" transform="translate(-81 -163)"></path><path d="M104 168v6m3-3-3 3-3-3" style="fill:none;fill-rule:nonzero;stroke:#fff;stroke-width:2px" transform="translate(-92 -152)"></path></svg></div> <p class="iconColor">Save Contact</p></a> <div class="actions"><div class="actionsC"><div class="actionBtn"><a href="tel:0918849168" target="_blank" rel="noopener noreferrer" aria-label="Mobile" style="background-color: rgb(237, 39, 36);"><div class="icon iconColor"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2"><path style="fill:none" d="M0 0h24v24H0z"></path><path d="M11.5 22a.952.952 0 0 1-1.052.945c-4.358-.544-7.851-4.338-8.379-8.39a.938.938 0 0 1 .936-1.046c.399-.009.847-.009 1.202-.009.388 0 .738.237.882.597l.478 1.196a.95.95 0 0 1-.21 1.025l-.107.107a.951.951 0 0 0-.181 1.091c.495.825 1.59 1.92 2.425 2.396a.927.927 0 0 0 1.066-.177c.05-.02.086-.056.122-.092a.95.95 0 0 1 1.025-.21l1.196.478c.36.144.597.494.597.882V22Z" style="fill:none;stroke:#fff;stroke-width:.95px" transform="translate(-2.21 -26.421) scale(2.10526)"></path></svg></div></a> <p class="textColor">
-                  Mobile
-                </p></div></div><div class="actionsC"><div class="actionBtn"><a href="mailto:krittin.p@tilleke.com" target="_blank" rel="noopener noreferrer" aria-label="Email" style="background-color: rgb(237, 39, 36);"><div class="icon iconColor"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2"><path style="fill:none" d="M0 0h24v24H0z"></path><path d="M22 33.75c0-.966-.896-1.75-2-1.75H4c-1.104 0-2 .784-2 1.75v10.5c0 .966.896 1.75 2 1.75h16c1.104 0 2-.784 2-1.75v-10.5Z" style="fill:none;stroke:#fff;stroke-width:1.86px" transform="matrix(1 0 0 1.14286 0 -32.571)"></path><path d="m18 7.042-6 2.625-6-2.625" style="fill:none;fill-rule:nonzero;stroke:#fff;stroke-width:1.86px" transform="matrix(1 0 0 1.14286 0 1.952)"></path></svg></div></a> <p class="textColor">
-                  Email
-                </p></div></div><div class="actionsC"><div class="actionBtn"><a href="https://line.me/ti/p/nextstamp" target="_blank" rel="noopener noreferrer" aria-label="Line" style="background-color: rgb(237, 39, 36);"><div class="icon iconColor"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2"><path style="fill:none" d="M0 0h24v24H0z"></path><path d="M164 30c5.519 0 10 4.033 10 9 0 8-11 11-11 11v-2.045c-5.05-.452-9-4.291-9-8.955 0-4.967 4.481-9 10-9Z" style="fill:none;stroke:#fff;stroke-width:2px" transform="translate(-152 -28)"></path><path d="M158 37v4h2" style="fill:none;stroke:#fff;stroke-width:1px;stroke-miterlimit:1" transform="translate(-152 -28.5)"></path><path d="M168 38.5h1.5" style="fill:none;stroke:#fff;stroke-width:1px;stroke-miterlimit:1" transform="translate(-152 -28)"></path><path d="M162 37v4" style="fill:none;stroke:#fff;stroke-width:1px;stroke-miterlimit:1" transform="translate(-152 -28.5)"></path><path d="M164 40.5v-4l2 4v-4M170 36.5h-2v4h2" style="fill:none;stroke:#fff;stroke-width:1px;stroke-miterlimit:1" transform="translate(-152 -28)"></path></svg></div></a> <p class="textColor">
-                  Line
-                </p></div></div><div class="actionsC"><div class="actionBtn"><a target="_blank" rel="noopener noreferrer" aria-label="Website" style="background-color: rgb(237, 39, 36);" href="https://www.tilleke.com/"><div class="icon iconColor"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2"><g><path style="fill:none" d="M0 0h24v24H0z"></path><clipPath id="a"><path d="M0 0h24v24H0z"></path></clipPath><g clip-path="url(#a)"><circle cx="12" cy="12" r="10" style="fill:none;stroke:#fff;stroke-width:2px"></circle><ellipse cx="40" cy="40" rx="4" ry="10" style="fill:none;stroke:#fff;stroke-width:2px;stroke-linejoin:miter" transform="translate(-28 -28)"></ellipse><path d="M40 50s-2-4-2-10 2-10 2-10" style="fill:none;stroke:#fff;stroke-width:2px" transform="rotate(-90 11.5 39.5)"></path></g></g></svg></div></a> <p class="textColor">
-                  Website
-                </p></div></div></div> <div class="actions secondary"><div class="actionsC"><div class="actionBtn secBtn"><a href="https://linkedin.com/in/krittin-poonsawat" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style="background: rgb(0, 119, 181);"><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 24 24"><path d="M20 3H4a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM8.339 18.337H5.667v-8.59h2.672v8.59zM7.003 8.574a1.548 1.548 0 1 1 0-3.096 1.548 1.548 0 0 1 0 3.096zm11.335 9.763h-2.669V14.16c0-.996-.018-2.277-1.388-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248h-2.667v-8.59h2.56v1.174h.037c.355-.675 1.227-1.387 2.524-1.387 2.704 0 3.203 1.778 3.203 4.092v4.71z"></path></svg></div></a></div></div></div> </main> <footer class="textColor" style="background-color: rgb(0, 32, 66);">
-          Created with
-          <a href="https://enbizcard.vishnuraghav.com/" target="_blank" rel="noopener noreferrer" class="textColor">EnBizCard</a></footer><script src="./qrcode.min.js"></script><script>let m=document.getElementById("modal"),c=document.getElementById("close"),ki=document.getElementById("keyView"),cv=document.getElementById("copyView"),curl=document.getElementById("copyURL"),qrv=document.getElementById("qrView"),qr=document.getElementById("qr"),s=document.getElementById("share"),sqr=document.getElementById("showQR"),sk=document.getElementById("showKey");function tC(e){"2rem"==e.style.top?(e.style.visibility="visible",e.style.top="0px",e.style.opacity=1):(e.style.top="2rem",e.style.opacity=0,setTimeout(()=>{e.style.visibility="hidden"},200))}function dN(e){e.style.display="none"}window.addEventListener("load",()=>{document.querySelector("#topActions").style.display="flex",qr.innerHTML=new QRCode({content:window.location.href,container:"svg-viewbox",join:!0,ecl:"L",padding:0}).svg()}),navigator.canShare?s.addEventListener("click",()=>{navigator.share({title:document.title,text:"You can view my Digital Business Card here:",url:window.location.href})}):s.addEventListener("click",()=>{tC(m),cv.style.display="flex",dN(qrv),ki&&dN(ki)}),sqr.addEventListener("click",()=>{tC(m),qrv.style.display="block",dN(cv),ki&&dN(ki)}),sk&&sk.addEventListener("click",()=>{tC(m),ki&&(ki.style.display="flex"),dN(cv),dN(qrv)}),c.addEventListener("click",()=>tC(m)),curl.addEventListener("click",async()=>{let e=curl.querySelectorAll(".iconColor")[1];await navigator.clipboard.writeText(window.location.href).then(t=>{e.innerText="Copied",setTimeout(()=>{e.innerText="Copy URL"},1e3)})});</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta property="og:title" content="Krittin Poonsawat — Digital Business Card" />
+  <title>Krittin Poonsawat — Digital Business Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy-900: #001225;
+      --navy-800: #001F3F;
+      --navy-700: #002B55;
+      --navy-600: #003A70;
+      --accent:   #ED2724;
+      --accent-hover: #d41f1c;
+      --white:    #FFFFFF;
+      --gray-100: #F0F2F5;
+      --gray-200: #D8DCE2;
+      --gray-400: #8A92A0;
+      --gray-500: #6B7280;
+      --linkedin: #0077B5;
+      --line:     #06C755;
+      --radius:   0.75rem;
+      --radius-lg: 1rem;
+      --shadow:   0 2px 8px rgba(0,0,0,0.18);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.32);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--navy-900);
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 480px;
+      min-height: 100vh;
+      background: linear-gradient(180deg, var(--navy-800) 0%, var(--navy-900) 100%);
+      position: relative;
+      opacity: 0;
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-up {
+      opacity: 0;
+      animation: slideUp 0.5s ease-out forwards;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+    .delay-6 { animation-delay: 0.6s; }
+
+    /* ── Top Bar ── */
+    .top-bar {
+      display: flex;
+      justify-content: flex-end;
+      padding: 1rem 1.25rem 0;
+      gap: 0.25rem;
+    }
+
+    .top-btn {
+      background: rgba(255,255,255,0.08);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .top-btn:hover { background: rgba(255,255,255,0.15); }
+
+    .top-btn svg { width: 18px; height: 18px; fill: none; stroke: var(--gray-200); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── Hero ── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1.5rem 0;
+      text-align: center;
+    }
+
+    .photo-ring {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      padding: 4px;
+      background: linear-gradient(135deg, var(--accent) 0%, #ff6b6b 100%);
+      margin-bottom: 1.5rem;
+    }
+
+    .photo-ring img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 3px solid var(--navy-800);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero .title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--gray-200);
+      margin-bottom: 0.25rem;
+    }
+
+    .company-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .company-logo {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+
+    .company-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--gray-200);
+    }
+
+    .address {
+      font-size: 0.78rem;
+      color: var(--gray-400);
+      line-height: 1.5;
+      max-width: 300px;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      margin: 2rem 1.5rem;
+    }
+
+    /* ── CTA ── */
+    .cta-section { padding: 0 1.5rem; }
+
+    .btn-save {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      border-radius: var(--radius);
+      background: var(--accent);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+      box-shadow: 0 4px 16px rgba(237,39,36,0.35);
+    }
+
+    .btn-save:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(237,39,36,0.45);
+    }
+
+    .btn-save:active { transform: translateY(0); }
+
+    .btn-save svg { width: 20px; height: 20px; fill: none; stroke: var(--white); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── Action Grid ── */
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      padding: 0 1.5rem;
+      margin-top: 1.25rem;
+    }
+
+    .action-card {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      text-decoration: none;
+      color: var(--white);
+      transition: transform 0.15s, background 0.15s, box-shadow 0.15s;
+    }
+
+    .action-card:hover {
+      background: rgba(255,255,255,0.09);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .action-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .action-icon svg { width: 20px; height: 20px; }
+
+    .action-icon.phone   { background: rgba(237,39,36,0.15); }
+    .action-icon.phone svg { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .action-icon.email   { background: rgba(59,130,246,0.15); }
+    .action-icon.email svg { fill: none; stroke: #3B82F6; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .action-icon.line    { background: rgba(6,199,85,0.12); }
+    .action-icon.line svg  { fill: var(--line); }
+
+    .action-icon.web     { background: rgba(168,85,247,0.15); }
+    .action-icon.web svg   { fill: none; stroke: #A855F7; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    .action-label { font-size: 0.82rem; font-weight: 500; color: var(--gray-400); }
+    .action-value { font-size: 0.9rem; font-weight: 600; margin-top: 0.1rem; }
+
+    /* ── Connect ── */
+    .connect { padding: 0 1.5rem; margin-top: 1.25rem; }
+
+    .btn-linkedin {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      width: 100%;
+      padding: 0.85rem;
+      border: none;
+      border-radius: var(--radius);
+      background: var(--linkedin);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+      box-shadow: 0 4px 16px rgba(0,119,181,0.3);
+    }
+
+    .btn-linkedin:hover {
+      background: #006399;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(0,119,181,0.4);
+    }
+
+    .btn-linkedin svg { width: 20px; height: 20px; fill: var(--white); }
+
+    /* ── Skills ── */
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gray-400);
+      padding: 0 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0 1.5rem;
+    }
+
+    .skill {
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--gray-200);
+      white-space: nowrap;
+    }
+
+    /* ── Share ── */
+    .share-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 1.5rem;
+      gap: 0.75rem;
+    }
+
+    .btn-share {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--gray-200);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .btn-share:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.25);
+    }
+
+    .btn-share svg { width: 18px; height: 18px; fill: none; stroke: var(--gray-200); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem 2.5rem;
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+
+    /* ── Modal ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0,10,20,0.85);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      width: 100%;
+      max-width: 340px;
+      text-align: center;
+      position: relative;
+      animation: slideUp 0.3s ease-out;
+    }
+
+    .modal-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy-800);
+      margin-bottom: 0.25rem;
+    }
+
+    .modal-card p {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-qr {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-qr svg, .modal-qr canvas {
+      width: 200px !important;
+      height: 200px !important;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      background: var(--gray-100);
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .modal-close:hover { background: var(--gray-200); }
+    .modal-close svg { width: 16px; height: 16px; stroke: var(--gray-500); stroke-width: 2; fill: none; stroke-linecap: round; }
+
+    .modal-url {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--gray-100);
+      border-radius: 0.5rem;
+      padding: 0.6rem 0.75rem;
+    }
+
+    .modal-url span {
+      flex: 1;
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: left;
+    }
+
+    .btn-copy {
+      background: var(--navy-800);
+      color: var(--white);
+      border: none;
+      border-radius: 0.4rem;
+      padding: 0.45rem 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn-copy:hover { background: var(--navy-700); }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <!-- Top Bar -->
+    <div class="top-bar animate-up delay-1">
+      <button class="top-btn" id="shareBtn" aria-label="Share">
+        <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      </button>
+      <button class="top-btn" id="qrBtn" aria-label="QR Code">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="3" height="3"/><line x1="21" y1="14" x2="21" y2="14.01"/><line x1="21" y1="21" x2="21" y2="21.01"/><line x1="17" y1="21" x2="17" y2="21.01"/><line x1="21" y1="17" x2="21" y2="17.01"/></svg>
+      </button>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero animate-up delay-1">
+      <div class="photo-ring">
+        <img src="./photo.jpeg" alt="Krittin Poonsawat" />
+      </div>
+      <h1>Krittin Poonsawat</h1>
+      <p class="title">Data Analyst Consultant, Investigation Unit</p>
+      <div class="company-row">
+        <img class="company-logo" src="./logo.jpeg" alt="Tilleke &amp; Gibbins" />
+        <span class="company-name">Tilleke &amp; Gibbins International Ltd.</span>
+      </div>
+      <p class="address">Supalai Grand Tower, 26th Floor<br/>1011 Rama 3 Road, Chongnonsi, Yannawa<br/>Bangkok 10120, Thailand</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Save Contact -->
+    <div class="cta-section animate-up delay-2">
+      <a class="btn-save" href="./krittinpoonsawat.vcf" download>
+        <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        Save Contact
+      </a>
+    </div>
+
+    <!-- Action Cards -->
+    <div class="actions animate-up delay-3">
+      <a class="action-card" href="tel:+66918849168">
+        <div class="action-icon phone">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="action-label">Mobile</div>
+          <div class="action-value">091-884-9168</div>
+        </div>
+      </a>
+      <a class="action-card" href="mailto:krittin.p@tilleke.com">
+        <div class="action-icon email">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 7 12 13 2 7"/></svg>
+        </div>
+        <div>
+          <div class="action-label">Email</div>
+          <div class="action-value">krittin.p@tilleke.com</div>
+        </div>
+      </a>
+      <a class="action-card" href="https://line.me/ti/p/nextstamp" target="_blank" rel="noopener noreferrer">
+        <div class="action-icon line">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 5.82 2 10.5c0 4.21 3.74 7.74 8.79 8.4.34.07.81.23.93.52.1.27.07.68.03.95l-.15.9c-.05.27-.21 1.07.94.58 1.15-.48 6.2-3.65 8.46-6.25C22.88 13.42 22 11.58 22 10.5 22 5.82 17.52 2 12 2zm-3.5 11h-2a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 1 0V12h1.5a.5.5 0 0 1 0 1zm1.5-.5a.5.5 0 0 1-1 0v-4a.5.5 0 0 1 1 0v4zm4.5.5h-2a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 1 0v3.5h1.5a.5.5 0 0 1 0 1zm3.21-.71L16.5 9.2a.5.5 0 0 0-.92.08v3.22L13.86 9.2a.5.5 0 0 0-.86.3v4a.5.5 0 0 0 1 0V10.28l1.72 3.3a.5.5 0 0 0 .86-.08V10.28l1.72 3.3a.5.5 0 0 0 .41.22.5.5 0 0 0 .4-.21.5.5 0 0 0 .09-.5z"/></svg>
+        </div>
+        <div>
+          <div class="action-label">Line</div>
+          <div class="action-value">nextstamp</div>
+        </div>
+      </a>
+      <a class="action-card" href="https://www.tilleke.com/" target="_blank" rel="noopener noreferrer">
+        <div class="action-icon web">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="4" ry="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+        </div>
+        <div>
+          <div class="action-label">Website</div>
+          <div class="action-value">tilleke.com</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- LinkedIn -->
+    <div class="connect animate-up delay-4">
+      <a class="btn-linkedin" href="https://linkedin.com/in/krittin-poonsawat" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24"><path d="M20.47 2H3.53A1.45 1.45 0 0 0 2 3.47v17.06A1.45 1.45 0 0 0 3.47 22h17.06A1.45 1.45 0 0 0 22 20.53V3.47A1.45 1.45 0 0 0 20.47 2zM8.09 18.74h-3v-9h3v9zM6.59 8.48a1.56 1.56 0 1 1 0-3.12 1.56 1.56 0 1 1 0 3.12zM18.91 18.74h-3v-4.38c0-1.05-.02-2.4-1.46-2.4s-1.69 1.14-1.69 2.32v4.46h-3v-9h2.89v1.23h.04a3.16 3.16 0 0 1 2.85-1.56c3.05 0 3.61 2 3.61 4.61v4.72z"/></svg>
+        Connect on LinkedIn
+      </a>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Skills -->
+    <div class="animate-up delay-5">
+      <div class="section-title">Expertise</div>
+      <div class="skills">
+        <span class="skill">Intellectual Property</span>
+        <span class="skill">OSINT</span>
+        <span class="skill">Digital Forensics</span>
+        <span class="skill">Brand Protection</span>
+        <span class="skill">Anti-counterfeiting</span>
+        <span class="skill">Data Analytics</span>
+        <span class="skill">Thai / English</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Share -->
+    <div class="share-section animate-up delay-6">
+      <button class="btn-share" id="openModal">
+        <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        Share this Card
+      </button>
+    </div>
+
+    <!-- Footer -->
+    <footer>&copy; 2026 Krittin Poonsawat</footer>
+  </div>
+
+  <!-- QR Modal -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal-card">
+      <button class="modal-close" id="closeModal" aria-label="Close">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <h3>Share this Card</h3>
+      <p>Scan the QR code or copy the link below</p>
+      <div class="modal-qr" id="qrContainer"></div>
+      <div class="modal-url">
+        <span id="urlText"></span>
+        <button class="btn-copy" id="copyBtn">Copy</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./qrcode.min.js"></script>
+  <script>
+    (() => {
+      const modal    = document.getElementById('modal');
+      const openBtn  = document.getElementById('openModal');
+      const qrTopBtn = document.getElementById('qrBtn');
+      const closeBtn = document.getElementById('closeModal');
+      const shareBtn = document.getElementById('shareBtn');
+      const copyBtn  = document.getElementById('copyBtn');
+      const urlText  = document.getElementById('urlText');
+      const qrCont   = document.getElementById('qrContainer');
+
+      const url = window.location.href;
+      urlText.textContent = url;
+
+      // Generate QR code
+      window.addEventListener('load', () => {
+        if (typeof QRCode !== 'undefined') {
+          const svg = new QRCode({
+            content: url,
+            container: 'svg-viewbox',
+            join: true,
+            ecl: 'M',
+            padding: 1,
+            color: '#001F3F',
+            background: '#FFFFFF',
+            width: 200,
+            height: 200
+          }).svg();
+          qrCont.innerHTML = svg;
+        }
+      });
+
+      function openModal() {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.style.transition = 'opacity 0.2s ease';
+        modal.style.opacity = '0';
+        setTimeout(() => {
+          modal.classList.remove('active');
+          modal.style.opacity = '';
+          modal.style.transition = '';
+          document.body.style.overflow = '';
+        }, 200);
+      }
+
+      openBtn.addEventListener('click', openModal);
+      qrTopBtn.addEventListener('click', openModal);
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+      // Share button: use native share if available, else open modal
+      shareBtn.addEventListener('click', () => {
+        if (navigator.canShare) {
+          navigator.share({
+            title: "Krittin Poonsawat's Digital Business Card",
+            text: 'View my digital business card:',
+            url: url
+          }).catch(() => {});
+        } else {
+          openModal();
+        }
+      });
+
+      // Copy URL
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(url);
+          copyBtn.textContent = 'Copied!';
+          setTimeout(() => { copyBtn.textContent = 'Copy'; }, 1500);
+        } catch {
+          // Fallback
+          const ta = document.createElement('textarea');
+          ta.value = url;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          copyBtn.textContent = 'Copied!';
+          setTimeout(() => { copyBtn.textContent = 'Copy'; }, 1500);
+        }
+      });
+
+      // Close modal on Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+      });
+    })();
+  </script>
+</body>
+</html>
